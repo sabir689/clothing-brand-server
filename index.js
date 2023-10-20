@@ -71,6 +71,35 @@ async function run() {
     res.send(result);
 })
 
+// for cart..........................
+
+const cartCollection = client.db('cartDB').collection('cart');
+
+app.get('/cart', async (req, res) => {
+    const cursor = cartCollection.find();
+    const result = await cursor.toArray()
+    res.send(result);
+})
+app.post('/cart', async (req, res) => {
+    const cartProduct = req.body;
+    console.log(cartProduct);
+    const result = await cartCollection.insertOne(cartProduct);
+    res.send(result)
+})
+app.delete('/cart/:id',async(req,res) =>{
+    const id = req.params.id;
+    const query = {_id:new ObjectId(id)}
+    const result = await cartCollection.deleteOne(query);
+    res.send(result)
+})
+
+
+
+
+
+
+
+
 
 
        
