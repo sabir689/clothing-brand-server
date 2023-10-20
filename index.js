@@ -27,7 +27,7 @@ const client = new MongoClient(uri, {
         deprecationErrors: true,
     }
 });
-// comment added
+
 
 async function run() {
     try {
@@ -73,6 +73,7 @@ async function run() {
         })
 
         // for cart..........................
+        // new comment added
 
         const cartCollection = client.db('cartDB').collection('cart');
 
